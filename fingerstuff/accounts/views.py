@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout as auth_logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django. contrib import messages
@@ -42,11 +42,11 @@ def login_view(request):
              form = UserLoginForm()
     else:
         form = AuthenticationForm() # create an instance of the form
-    return render(request, 'accounts/login.html', {'form', form}) # render the login page  and sends the form to the template 'form' is the name of the template tag and form is the data being sent to the template
+    return render(request, 'accounts/login.html', {'form': form}) # render the login page  and sends the form to the template 'form' is the name of the template tag and form is the data being sent to the template
 
 
 def logout_view(request):
-    logout(request)
+    auth_logout(request)
     messages.info(request, 'You have been logged out.')
     return redirect('product_list')
 
