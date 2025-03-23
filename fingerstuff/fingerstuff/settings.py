@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',  # Ensure this is here
     'products', # my app
     'accounts',
+    'cart',
 ]
 
 MIDDLEWARE = [
